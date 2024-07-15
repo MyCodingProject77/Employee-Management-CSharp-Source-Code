@@ -1,0 +1,110 @@
+
+
+   Save Code
+
+   SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=EmployeeDb;Integrated Security=True");
+            con.Open();
+            SqlCommand cnn = new SqlCommand("insert into Employee values(@employeeid,@employeename,@email,@address,@position,@salary)", con);
+            cnn.Parameters.AddWithValue("@EmployeeID", int.Parse(textBox1.Text));
+            cnn.Parameters.AddWithValue("@EmployeeName", textBox2.Text);
+            cnn.Parameters.AddWithValue("@Email", textBox3.Text);
+            cnn.Parameters.AddWithValue("@Address", textBox4.Text);
+            cnn.Parameters.AddWithValue("@Position", textBox5.Text);
+            cnn.Parameters.AddWithValue("@Salary", int.Parse(textBox6.Text));
+            cnn.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Saved Successfully");
+
+
+
+
+
+
+
+    Add Code
+
+    SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=EmployeeDb;Integrated Security=True");
+            con.Open();
+            SqlCommand cnn = new SqlCommand("select * from Employee", con);
+            SqlDataAdapter da = new SqlDataAdapter(cnn);
+            DataTable table = new DataTable();
+            da.Fill(table);
+            dataGridView1.DataSource = table;
+
+
+
+
+
+
+
+
+    Update Code
+
+
+    SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=EmployeeDb;Integrated Security=True");
+            con.Open();
+            SqlCommand cnn = new SqlCommand("update Employee set employeename=@employeename,email=@email,address=@address,position=@position,salary=@salary where employeeid=@employeeid", con);
+            cnn.Parameters.AddWithValue("@EmployeeID", int.Parse(textBox1.Text));
+            cnn.Parameters.AddWithValue("@EmployeeName", textBox2.Text);
+            cnn.Parameters.AddWithValue("@Email", textBox3.Text);
+            cnn.Parameters.AddWithValue("@Address", textBox4.Text);
+            cnn.Parameters.AddWithValue("@Position", textBox5.Text);
+            cnn.Parameters.AddWithValue("@Salary", int.Parse(textBox6.Text));
+            cnn.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Updated Successfully");
+
+
+
+
+
+
+    Delete Code
+
+
+    SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=EmployeeDb;Integrated Security=True");
+            con.Open();
+            SqlCommand cnn = new SqlCommand("delete Employee where employeeid=@employeeid", con);
+            cnn.Parameters.AddWithValue("@EmployeeID", int.Parse(textBox1.Text));
+            
+            cnn.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Deleted Successfully");
+
+
+
+
+
+     Search Code
+
+     SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=EmployeeDB;Integrated Security=True");
+            con.Open();
+            SqlCommand cnn = new SqlCommand("select * from Employee where employeeid=@employeeid", con);
+            cnn.Parameters.AddWithValue("@EmployeeID", int.Parse(textBox1.Text));
+
+            SqlDataAdapter da = new SqlDataAdapter(cnn);
+            DataTable table = new DataTable();
+            da.Fill(table);
+            con.Close();
+            dataGridView1.DataSource = table;
+
+
+
+
+
+
+     Employee Load Code
+
+     SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=EmployeeDb;Integrated Security=True");
+            con.Open();
+            SqlCommand cnn = new SqlCommand("select * from Employee", con);
+            SqlDataAdapter da = new SqlDataAdapter(cnn);
+            DataTable table = new DataTable();
+            da.Fill(table);
+            dataGridView1.DataSource = table;
+            count1.Text = table.Rows.Count.ToString();
+
+
+
+
+     
